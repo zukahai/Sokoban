@@ -81,6 +81,8 @@ class game {
     }
 
     movePanda(dx, dy) {
+        if (countWin > -1)
+            return;
         if (!this.isPoint(xPanda + dx, yPanda + dy))
             return;
         if (A[xPanda + dx][yPanda + dy] == 0) {
@@ -234,7 +236,7 @@ class game {
         count++;
         this.render();
         if (this.checkWin() && countWin == -1) {
-            countWin = count + 10;
+            countWin = count + 15;
         }
 
         if (this.checkWin() && countWin == count) {
