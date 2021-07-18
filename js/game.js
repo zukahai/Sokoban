@@ -143,7 +143,6 @@ class game {
         })
 
         document.addEventListener("touchend", evt => { 
-            console.log(Math.abs(Xstart - Xend), ' ', Math.abs(Ystart - Yend))  ;
             if (Math.abs(Xstart - Xend) > Math.abs(Ystart - Yend)) {
                 if (Xstart > Xend)
                     this.movePanda(0, -1);
