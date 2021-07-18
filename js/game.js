@@ -55,6 +55,7 @@ class game {
             level = Math.floor(this.getCookie("level"));
             score = Math.floor(this.getCookie("score"));
         }
+        level = 8;
 
         this.render();
         this.loop();
@@ -221,7 +222,7 @@ class game {
             var x = evt.offsetX == undefined ? evt.layerX : evt.offsetX;
             var y = evt.offsetY == undefined ? evt.layerY : evt.offsetY;
             if (x > game_W -  1.5 * this.getWidth () && y < 1.3 * this.getWidth()) {
-                this.setUp(data[level - 1]);
+                this.setUp(data[level]);
             }
             console.log(x, ' ', y);
         })
