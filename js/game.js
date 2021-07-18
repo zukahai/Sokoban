@@ -74,7 +74,7 @@ class game {
             xPanda += dx;
             yPanda += dy;
             Score2--;
-        } if (A[xPanda + dx][yPanda + dy] == 4) {
+        } else if (A[xPanda + dx][yPanda + dy] == 4) {
             A[xPanda][yPanda] = (A[xPanda][yPanda] == 5) ? 0 : 4;
             A[xPanda + dx][yPanda + dy] = 6;
             xPanda += dx;
@@ -164,7 +164,6 @@ class game {
             var x = evt.offsetX == undefined ? evt.layerX : evt.offsetX;
             var y = evt.offsetY == undefined ? evt.layerY : evt.offsetY;
             if (x > game_W -  1.5 * this.getWidth () && y < 1.3 * this.getWidth()) {
-                score -= 20;
                 this.setUp(data[level - 1]);
             }
             console.log(x, ' ', y);
@@ -207,14 +206,16 @@ class game {
 
  
     render() {
-        if (game_W * c != document.documentElement.clientWidth || game_H != document.documentElement.clientHeight) {
+        if (c != document.documentElement.clientWidth / this.canvas.width || game_H != document.documentElement.clientHeight) {
+            console.log((game_W * c != document.documentElement.clientWidth));
             this.canvas.width = document.documentElement.clientWidth;
             this.canvas.height = document.documentElement.clientHeight;
             if (this.canvas.width > this.canvas.height)
-                this.canvas.width = this.canvas.height
+                this.canvas.width = this.canvas.height;
             c = document.documentElement.clientWidth / this.canvas.width;
             game_W = this.canvas.width;
             game_H = this.canvas.height;
+            this.setUp(data[level - 1]);
         }
     }
 
