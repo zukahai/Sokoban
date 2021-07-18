@@ -66,8 +66,8 @@ class game {
     }
 
     setUp(str) {
-        document.cookie = "level=" + level;
-        document.cookie = "score=" + score;
+        this.setCookie("level", level, 7);
+        this.setCookie("score", score, 7);
         count = countWin = -1;
         Score2 = 200;
         let s = str.split("|");
@@ -329,7 +329,14 @@ class game {
             }
         }
         return "";
-      }
+    }
+
+    setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        let expires = "expires="+ d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
 }
 
 var g = new game();
