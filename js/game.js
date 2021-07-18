@@ -45,6 +45,10 @@ class game {
         this.canvas = document.createElement("canvas");
         this.context = this.canvas.getContext("2d");
         document.body.appendChild(this.canvas);
+        if (this.getCookie("level") != "")
+            level = this.getCookie("level");
+        else
+            level = 0;
 
         this.render();
         this.setUp(data[level++]);
@@ -53,6 +57,7 @@ class game {
         this.listenMouse();
         this.listenKeyboard();
         this.listenTouch();
+        
     }
 
     setUp(str) {
@@ -305,6 +310,22 @@ class game {
             return false;
         return true;
     }
+
+    getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+      }
 }
 
 var g = new game();
