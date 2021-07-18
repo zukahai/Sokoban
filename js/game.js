@@ -1,4 +1,5 @@
 game_W = 0, game_H = 0;
+c = 0;
 
 class game {
     constructor() {
@@ -50,9 +51,12 @@ class game {
 
  
     render() {
-        if (game_W != document.documentElement.clientWidth || game_H != document.documentElement.clientHeight) {
+        if (game_W * c != document.documentElement.clientWidth || game_H != document.documentElement.clientHeight) {
             this.canvas.width = document.documentElement.clientWidth;
             this.canvas.height = document.documentElement.clientHeight;
+            if (this.canvas.width > this.canvas.height)
+                this.canvas.width = this.canvas.height
+            c = document.documentElement.clientWidth / this.canvas.width;
             game_W = this.canvas.width;
             game_H = this.canvas.height;
         }
