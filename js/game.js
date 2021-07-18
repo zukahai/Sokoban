@@ -61,6 +61,7 @@ class game {
     }
 
     setUp(str) {
+        document.cookie = "level=" + level;
         count = countWin = -1;
         Score2 = 200;
         let s = str.split("|");
