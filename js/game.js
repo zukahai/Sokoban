@@ -19,6 +19,7 @@ count = countWin = -1;
 level = 3;
 score = 0;
 Score2 = 100;
+Xstart = Xend = Ystart = Yend = -1;
 
 class game {
     constructor() {
@@ -38,6 +39,7 @@ class game {
 
         this.listenMouse();
         this.listenKeyboard();
+        this.listenTouch();
     }
 
     setUp(str) {
@@ -127,6 +129,33 @@ class game {
                 if (A[i][j] == 4 || A[i][j] == 6)
                     return false;
         return true;
+    }
+
+    listenTouch() {
+        document.addEventListener("touchmove", evt => {
+            Yend = evt.touches[0].pageY;
+            Xend = evt.touches[0].pageX - (document.documentElement.clientWidth - game_W) / 2;
+        })
+
+        document.addEventListener("touchstart", evt => {
+            Ystart = evt.touches[0].pageY;
+            Xstart = evt.touches[0].pageX - (document.documentElement.clientWidth - game_W) / 2;
+        })
+
+        document.addEventListener("touchend", evt => { 
+            console.log(Math.abs(Xstart - Xend), ' ', Math.abs(Ystart - Yend))  ;
+            if (Math.abs(Xstart - Xend) > Math.abs(Ystart - Yend)) {
+                if (Xstart > Xend)
+                    this.movePanda(0, -1);
+                else 
+                    this.movePanda(0, 1);
+            } else {
+                if (Ystart > Yend)
+                    this.movePanda(-1, 0);
+                else 
+                    this.movePanda(1, 0);
+            }
+        })
     }
 
     listenKeyboard() {
