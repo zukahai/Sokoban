@@ -271,10 +271,7 @@ class game {
             c = document.documentElement.clientWidth / this.canvas.width;
             game_W = this.canvas.width;
             game_H = this.canvas.height;
-            if (level == 0)
-                this.setUp(data[0]);
-            else
-                this.setUp(data[level - 1]);
+            this.setUp(data[level]);
         }
     }
 
