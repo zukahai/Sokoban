@@ -57,7 +57,6 @@ class game {
             level = 0;
 
         this.render();
-        this.setUp(data[level++]);
         this.loop();
 
         this.listenMouse();
@@ -257,7 +256,7 @@ class game {
             score += Score2;
             if (level == data.length)
                 level = 0;
-            this.setUp(data[level++]);
+            this.setUp(data[++level]);
         }
     }
 
@@ -288,7 +287,7 @@ class game {
     drawScore() {
         this.context.font = this.getWidth() / 1.5 + 'px Arial Black';
         this.context.fillStyle = "#FF00CC";
-        this.context.fillText("Level: " + level, this.getWidth(), this.getWidth());
+        this.context.fillText("Level: " + (level + 1), this.getWidth(), this.getWidth());
         this.context.fillText("Score: " + score + " + " + Score2, game_W / 2, this.getWidth());
 
         this.context.drawImage(reload_Im, game_W - 1.5 * this.getWidth(), 0.2 * this.getWidth(), this.getWidth(), this.getWidth());
