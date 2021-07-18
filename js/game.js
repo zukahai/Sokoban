@@ -51,10 +51,10 @@ class game {
         this.canvas = document.createElement("canvas");
         this.context = this.canvas.getContext("2d");
         document.body.appendChild(this.canvas);
-        if (this.getCookie("level") != "")
+        if (this.getCookie("level") != "") {
             level = Math.floor(this.getCookie("level"));
-        else
-            level = 0;
+            score = Math.floor(this.getCookie("score"));
+        }
 
         this.render();
         this.loop();
@@ -67,6 +67,7 @@ class game {
 
     setUp(str) {
         document.cookie = "level=" + level;
+        document.cookie = "score=" + score;
         count = countWin = -1;
         Score2 = 200;
         let s = str.split("|");
