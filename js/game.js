@@ -31,7 +31,7 @@ count = countWin = -1;
 // level = data.length - 1;
 level = 0;
 score = 0;
-Score2 = 100;
+Score2 = 0;
 Xstart = Xend = Ystart = Yend = -1;
 
 class game {
@@ -57,7 +57,7 @@ class game {
 
     setUp(str) {
         count = countWin = -1;
-        Score2 = 100;
+        Score2 = 200;
         let s = str.split("|");
         M = Math.floor(s[0]);
         N = Math.floor(s[1]);
@@ -83,6 +83,8 @@ class game {
     movePanda(dx, dy) {
         if (countWin > -1)
             return;
+        if (Score2 < 50)
+            Score2 = 50;
         if (!this.isPoint(xPanda + dx, yPanda + dy))
             return;
         if (A[xPanda + dx][yPanda + dy] == 0) {
