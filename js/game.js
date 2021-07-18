@@ -1,5 +1,13 @@
 game_W = 0, game_H = 0;
 c = 0;
+data = ["6|6|111111100501121111101999141999111999"];
+M = N = size = XX = YY = 0;
+A = [];
+im = [];
+for (let i = 0; i < 6; i++) {
+    im[i] = new Image();
+    im[i].src = "images/" + i + ".png";
+}
 
 class game {
     constructor() {
@@ -14,9 +22,27 @@ class game {
         document.body.appendChild(this.canvas);
 
         this.render();
+        this.setUp(data[0]);
         this.loop();
 
         this.listenMouse();
+    }
+
+    setUp(str) {
+        let s = str.split("|");
+        M = Math.floor(s[0]);
+        N = Math.floor(s[1]);
+        for (let i = 0; i < M; i++) {
+            let temp = [];
+            for (let j = 0; j < N; j++)
+                temp[j] = s[2][i * N + j];
+            A[i] = temp;
+        }
+        console.log(A);
+
+        size = game_W / (N + 1);
+        XX = size / 2;
+        YY = (game_H - size * M) / 2;
     }
 
     listenMouse() {
@@ -64,6 +90,14 @@ class game {
 
     draw() {
         this.clearScreen();
+        this.drawMatrix();
+    }
+
+    drawMatrix(){
+        for (let i = 0; i < M; i++) 
+            for (let j = 0; j < N; j++)
+                if (A[i][j] != 9)
+                    this.context.drawImage(im[A[i][j]], XX + j * size, YY + i * size, size + 1, size + 1);
     }
 
     clearScreen() {
