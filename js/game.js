@@ -28,7 +28,8 @@ reload_Im = new Image();
 reload_Im.src = "images/reload.png";
 
 count = countWin = -1;
-level = data.length - 1;
+// level = data.length - 1;
+level = 0;
 score = 0;
 Score2 = 100;
 Xstart = Xend = Ystart = Yend = -1;
