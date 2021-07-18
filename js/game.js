@@ -285,9 +285,7 @@ class game {
     drawScore() {
         this.context.font = this.getWidth() / 1.5 + 'px Arial Black';
         this.context.fillStyle = "#FF00CC";
-        this.context.fillText("Level: " + (Math.floor(level + 1)), this.getWidth(), this.getWidth());
-        this.context.fillText("Score: " + score + " + " + Score2, game_W / 2, this.getWidth());
-
+        this.context.fillText("Level: " + (Math.floor(level + 1)) + " / " + data.length + "     Score: " + score + " + " + Score2, this.getWidth(), this.getWidth());
         this.context.drawImage(reload_Im, game_W - 1.5 * this.getWidth(), 0.2 * this.getWidth(), this.getWidth(), this.getWidth());
     }
 
