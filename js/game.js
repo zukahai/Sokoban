@@ -52,11 +52,9 @@ class game {
         this.context = this.canvas.getContext("2d");
         document.body.appendChild(this.canvas);
         if (this.getCookie("level") != "") {
-            console.log(this.getCookie("level"));
             level = Math.floor(this.getCookie("level"));
             score = Math.floor(this.getCookie("score"));
         }
-        level = 8;
 
         this.render();
         this.loop();
